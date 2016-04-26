@@ -1,0 +1,39 @@
+version: "2"
+
+volumes:
+  mongodb: {}
+
+services:
+
+  nginx:
+    build:
+      dockerfile: dockerfiles/nginx/Dockerfile
+      context: .
+    ports:
+      - "80:80"
+    depends_on:
+      - swift
+      - mongo_express
+    volumes:
+      - "./static/:/var/www/static"
+    env_file:
+      - "./env/admin.env"
+
+  swift:
+    build:
+      dockerfile: dockerfiles/swift/Dockerfile-dev
+      context: .
+    depends_on:
+      - mongo
+    volumes:
+      - "./:/app"
+
+  mongo:
+    image: mongo
+    volumes:
+      - "mongodb:/data/db"
+
+  mongo_express:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_SITE_BASEURL=/admin/mongo-express/
