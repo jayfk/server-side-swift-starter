@@ -1,3 +1,17 @@
+## Prerequisite
+
+You'll need to have 
+
+- docker
+- docker-compose > 1.6.0
+- docker-machine (optional)
+
+installed on your mac. 
+
+The easiest way to get them all is to download and install [docker-toolbox](https://www.docker.com/products/docker-toolbox). If you are completely new to docker, check out the [getting started with docker](https://docs.docker.com/mac/) guide.
+
+Make sure you can run docker commands like `docker run hello-world` on your terminal, or use the docker quickstart terminal.
+
 ## Installation
 
 Clone the template in a new directory (make sure to replace `NewProject` with your own project name) 
