@@ -1,21 +1,32 @@
 ## Installation
 
-Clone the project 
-    git clone bla bla
+Clone the template in a new directory (make sure to replace `NewProject` with your own project name) 
+    
+    git clone https://github.com/jayfk/server-side-swift-starter.git NewProject
     cd NewProject/
+    
+Remove all upstream git files, we don't need them.
+
     rm -rf .git/
-    
-    sed -i.tmp s/#ADMIN_USER#/root/g env/admin.env
-    sed -i.tmp s/#ADMIN_PASSWORD#/shiny-new-password/g env/admin.env
-    sed -i.tmp s/#PROJECT_NAME#/NewProject/g dockerfiles/swift/autoreload.sh dockerfiles/swift/Dockerfile Package.swift
+
+Change the defaults with sed (make sure to replace the values in brackets, e.g `<user>` with `jayfk`)
+
+    sed -i.tmp s/#ADMIN_USER#/<user>/g env/admin.env
+    sed -i.tmp s/#ADMIN_PASSWORD#/<password>/g env/admin.env
+    sed -i.tmp s/#PROJECT_NAME#/<NewProject>/g dockerfiles/swift/autoreload.sh dockerfiles/swift/Dockerfile Package.swift
     find . -type f -name \*.tmp -exec rm -f {} \;
-    
+
+Build the dev environment
+
     docker-compose -f dev.yml build
+
+Create an XCode project and open it (make sure to replace `NewProject` with your own project name)
     
     docker-compose -f dev.yml run swift swift build --generate-xcodeproj .
-    
     open NewProject.xcodeproj
-    
+
+## Development
+
     docker-compose -f dev.yml up
     
 The first start takes some time because the swift package manager has to install and fetch all
