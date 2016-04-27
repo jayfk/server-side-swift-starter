@@ -1,3 +1,10 @@
+/**
+ * This example uses IBMs Kitura framework: https://github.com/IBM-Swift/Kitura
+ * For more examples, see: https://github.com/IBM-Swift/Kitura-Sample/blob/master/Sources/KituraSample/main.swift
+ *
+ * You can replace this code and use whatever framework you like (or code your own!).
+ * Just make sure your code starts some kind of server and speaks HTTP on port 8090.
+**/
 import Kitura
 import KituraNet
 import KituraSys
@@ -5,9 +12,13 @@ import MongoDB
 import SwiftyJSON
 import Foundation
 
-let router = Router()
+// initializes connection to the mongo database, see https://github.com/Danappelxx/SwiftMongoDB
+// for usage information
 let db = Database(client: try Client(host: "mongo", port: 27017), name: "db")
 
+let router = Router()
+
+// Endpoint for /, returns plain old html
 router.get("/") { request, response, next in
     response.setHeader("Content-Type", value: "text/html; charset=utf-8")
     let p1 = request.params["user"] ?? "(nil)"
@@ -20,6 +31,7 @@ router.get("/") { request, response, next in
     }
 }
 
+// Endpoint for /about, returns JSON
 router.get("/about") {
 request, response, next in
     let json = JSON([
