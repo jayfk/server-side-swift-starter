@@ -27,7 +27,8 @@ RUN groupadd -r swift && useradd -r -g swift swift
 RUN chown -R swift /app
 
 # WARNING: SwiftyJSON takes around 30mins to build with release configuration, we are using the
-# debug configuration for now
+# debug configuration for now until https://github.com/apple/swift/commit/2cdd7d64e1e2add7bcfd5452d36e7f5fc6c86a03
+# is merged
 RUN swift build --configuration debug -Xcc -fblocks -Xlinker -ldispatch -Xcc -I/usr/local/include/libbson-1.0/
 USER SWIFT
 CMD [".build/debug/#PROJECT_NAME#"]
