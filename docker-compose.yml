@@ -11,6 +11,8 @@ services:
       context: .
     ports:
       - "80:80"
+      # If you want to support TLS, enable port 443 and edit dockerfiles/nginx/nginx.conf
+      #- "443:443"
     depends_on:
       - swift
       - mongo_express
