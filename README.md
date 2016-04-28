@@ -1,11 +1,11 @@
 ## Server Side Swift Starter
-A starter template to develop and deploy swift applications with docker. 
+A starter template to develop and deploy swift 3 applications with docker. 
 
 ### Features
 - Swift 3.0 (SNAPSHOT-2016-03-24-a)
 - Uses two environments for development and production.
 - Code autoreload during development
-- Kitura swift framework
+- Kitura swift framework preinstalled (but can be replaced)
 - NGINX handles static files and acts as a reverse proxy for the swift application
 - Pre configured MongoDB database, comes with an admin interface to create/backup databases
 - Uses environment variables to store secrets
@@ -211,9 +211,12 @@ Once ready, check out your shiny swift powered web app by running
     open "http://$(docker-machine ip swiftapp)"
     
 
-### Subsequent Deployments
+### Pushing new code
+
+If you want to push new code to the server, you'll need to rebuild the image, create a new container and restart the running container. 
 
     docker-compose build swift
+    docker-compose create swift
     docker-compose stop swift
     docker-compose start swift
 
