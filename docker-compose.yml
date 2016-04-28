@@ -18,6 +18,7 @@ services:
       - mongo_express
     env_file:
       - "./env/admin.env"
+    restart: always
 
   swift:
     build:
@@ -25,13 +26,16 @@ services:
       context: .
     depends_on:
       - mongo
+    restart: always
 
   mongo:
     image: mongo
     volumes:
       - "mongodb:/data/db"
+    restart: always
 
   mongo_express:
     image: mongo-express
     environment:
       - ME_CONFIG_SITE_BASEURL=/admin/mongo-express/
+    restart: always
