@@ -211,9 +211,12 @@ Once ready, check out your shiny swift powered web app by running
     open "http://$(docker-machine ip swiftapp)"
     
 
-### Subsequent Deployments
+### Pushing new code
+
+If you want to push new code to the server, you'll need to rebuild the image, create a new container and restart the running container. 
 
     docker-compose build swift
+    docker-compose create swift
     docker-compose stop swift
     docker-compose start swift
 
