@@ -1,5 +1,4 @@
 ## Server Side Swift Starter
-### About
 A starter template to develop and deploy swift applications with docker. 
 
 ### Features
@@ -11,6 +10,15 @@ A starter template to develop and deploy swift applications with docker.
 - Pre configured MongoDB database, comes with an admin interface to create/backup databases
 - Uses environment variables to store secrets
 
+### Screenshots
+
+![Hi from swift](https://dockify.io/content/images/2016/04/hi_from_swift.png)
+
+![Swift JSON](https://dockify.io/content/images/2016/04/json.png)
+
+![Admin Interface](https://dockify.io/content/images/2016/04/admin.png)
+
+![Mongo Express](https://dockify.io/content/images/2016/04/mongo-express.png)
 
 ## Getting started
 ### Prerequisite
@@ -87,10 +95,6 @@ Open up your browser with
 
     open "http://$(docker-machine ip dev)"
 
-*Pro tip: Add the IP `docker-machine ip dev` is putting out to `/etc/hosts` under the 
-`docker.local` domain. For example: add a new line with `192.168.99.100 docker.local`. You will now
-be able to connect to your app at http://docker.local/*
-
 The code powering the application is in `Sources/main.swift`. Change the html string and hit save, you'll see
 that the application is rebuilt automatically.
 
@@ -99,6 +103,10 @@ rebuild code here
 ```
 
 Refresh your browser and you should see your changes.
+
+*Pro tip: Add the IP `docker-machine ip dev` is putting out to `/etc/hosts` under the 
+`docker.local` domain. For example: add a new line with `192.168.99.100 docker.local`. You will now
+be able to connect to your app at http://docker.local/*
 
 
 ### Where to go from here
@@ -114,7 +122,7 @@ kind of server and speaks HTTP on port 8090.
  - Dependencies are pulled in automatically using the [swift package manager](https://github.com/apple/swift-package-manager). 
  If you want to add a new dependency, add it to `Package.swift`.
  
- - [Create an Xcode Project](###Creating an Xcode Project)
+ - [Create an Xcode Project](#creating-an-xcode-project)
     
     
 ## Deploying to production
